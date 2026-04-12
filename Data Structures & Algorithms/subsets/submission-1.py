@@ -1,0 +1,28 @@
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res = []
+
+        subset = []
+
+        def dfs(i: int):
+            if(i == len(nums)):
+                res.append(subset.copy())
+                return
+            
+
+
+            #We choose the ith element
+            subset.append(nums[i])
+            dfs(i + 1)
+
+            #We don't choose the ith element
+            subset.pop()
+            dfs(i + 1)
+
+            return
+
+
+
+        dfs(0)
+
+        return res
